@@ -1,23 +1,23 @@
-package co.com.service;
+package co.com.ias.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import co.com.ias.dao.IPersonaDao;
-import co.com.ias.dao.PersonaDaoImpl;
 import co.com.ias.model.Persona;
 
+@Service
 public class PersonaServiceImpl implements IPersonaService {
+    
+	@Autowired
+	private IPersonaDao daoPersona;
 
-	private IPersonaDao dao;
-
-	
-	public PersonaServiceImpl() {
-		dao = new PersonaDaoImpl();
-	}
 
 	@Override
 	public void create(Persona persona) {
-		dao.create(persona);
+		daoPersona.create(persona);
 	}
 
 	@Override
