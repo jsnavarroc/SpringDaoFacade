@@ -39,5 +39,9 @@ public class PersonaServiceImpl implements IPersonaService {
 	public void delete(Integer id) {
 		daoPersona.delete(id);
 	}
+	@Override
+	public void deleteUpdate(Integer id) {
+		daoPersona.deleteUpdate(id);
+	}
 
 }

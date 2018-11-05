@@ -11,5 +11,6 @@ public interface IPersonaDao {
 	List <Persona> listAll();
 	Persona find(Integer id);
 	void delete (Integer id );
+	void deleteUpdate(Integer id);
 	
 }

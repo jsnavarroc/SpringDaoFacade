@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.com.ias.model.Persona;
 
@@ -40,7 +41,8 @@ public class PersonaDaoImpl extends JdbcDaoSupport implements IPersonaDao {
 	@Override
 	public Persona find(Integer id) {
 		String sql = "SELECT id, apellidos, nombres FROM persona WHERE id = ?";
-		Persona persona = getJdbcTemplate().queryForObject(sql, new BeanPropertyRowMapper<Persona> (Persona.class));
+		Persona persona = getJdbcTemplate().queryForObject(sql, new Object[] {id} ,new BeanPropertyRowMapper<Persona> (Persona.class));
+		
 		return persona;
 	}
 
@@ -48,6 +50,16 @@ public class PersonaDaoImpl extends JdbcDaoSupport implements IPersonaDao {
 	public void delete(Integer id) {
 		String sql = "DELETE FROM persona WHERE id = ?";
 		getJdbcTemplate().update(sql, new Object[] {id});
+	}
+	
+	@Transactional("transctionManage")
+	@Override
+	public void deleteUpdate(Integer id){
+		String sql = "DELETE FROM persona WHERE id = ?";
+		getJdbcTemplate().update(sql, new Object[] { id });
+
+		sql = "UPDATE persona SET nombrec = ?, apellidos = ?, WHERE id = ?";
+		getJdbcTemplate().update(sql, new Object[] { null, null, 1 });
 	}
 
 }
