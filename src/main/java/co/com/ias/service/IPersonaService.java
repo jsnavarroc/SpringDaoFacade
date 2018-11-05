@@ -10,4 +10,6 @@ public interface IPersonaService {
 	List <Persona> listAll();
 	Persona find(Integer id);
 	void delete (Integer id );
+	void deleteUpdate(Integer id);
+
 }
