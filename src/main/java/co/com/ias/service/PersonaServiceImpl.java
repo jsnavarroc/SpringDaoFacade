@@ -22,26 +22,22 @@ public class PersonaServiceImpl implements IPersonaService {
 
 	@Override
 	public void update(Persona persona) {
-		// TODO Auto-generated method stub
-
+		daoPersona.update(persona);
 	}
 
 	@Override
 	public List<Persona> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return daoPersona.listAll();
 	}
 
 	@Override
 	public Persona find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoPersona.find(id);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		daoPersona.delete(id);
 	}
 
 }
